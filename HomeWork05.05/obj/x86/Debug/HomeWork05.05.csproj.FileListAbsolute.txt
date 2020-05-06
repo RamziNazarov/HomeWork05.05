@@ -2,3 +2,4 @@ C:\Users\AB\Desktop\HomeWork05.05\HomeWork05.05\bin\Debug\HomeWork05.05.exe
 C:\Users\AB\Desktop\HomeWork05.05\HomeWork05.05\bin\Debug\HomeWork05.05.pdb
 C:\Users\AB\Desktop\HomeWork05.05\HomeWork05.05\obj\x86\Debug\HomeWork05.05.exe
 C:\Users\AB\Desktop\HomeWork05.05\HomeWork05.05\obj\x86\Debug\HomeWork05.05.pdb
+C:\Users\AB\Desktop\HomeWork05.05\HomeWork05.05\obj\x86\Debug\HomeWork05.05.csprojResolveAssemblyReference.cache

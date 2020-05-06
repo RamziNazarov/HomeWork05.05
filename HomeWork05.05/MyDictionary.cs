@@ -8,33 +8,82 @@ namespace HomeWork05._05
 {
     class MyDictionary<TKey,TValue>
     {
-        List<TKey> keys = new List<TKey>();
-        List<TValue> values = new List<TValue>();
-        public List<TKey> Keys { get { return keys; } }
-        public List<TValue> Values { get { return values; } }
-        public int Count { get { return keys.Count; } }
+        List<Entry<TKey,TValue>> entries = new List<Entry<TKey,TValue>>();
+        public IEnumerator<Entry<TKey,TValue>> GetEnumerator()
+        {
+            return entries.GetEnumerator();
+        }
+        //public IEnumerator GetEnumerator()
+        //{ 
+        //    string[] array = new string[entries.Count];
+        //    for(int i = 0; i < array.Length;i++)
+        //    {
+        //        array[i] = "[" + entries[i].Key.ToString() + "," + entries[i].Value.ToString() + "]";
+        //    }
+        //    return array.GetEnumerator();
+        //}
+        public List<TKey> Keys 
+        { 
+            get 
+            {
+                List<TKey> n = new List<TKey>();
+                for (int i = 0; i < entries.Count; i++)
+                {
+                    n.Add(entries[i].Key);
+                }
+                return n; 
+            } 
+        }
+        public List<TValue> Values 
+        {
+            get 
+            {
+                List<TValue> n = new List<TValue>();
+                for (int i = 0; i < entries.Count; i++)
+                {
+                    n.Add(entries[i].Value);
+                }
+                return n; 
+            } 
+        }
+        public int Count { get { return entries.Count; } }
         public TValue this[TKey index]
         {
             get 
             {
-                for (int i = 0; i < keys.Count; i++)
+                for (int i = 0; i < entries.Count; i++)
                 {
-                    if (keys[i] == (dynamic)index)
-                        return values[i];
+                    if (entries[i].Key == (dynamic)index)
+                        return entries[i].Value;
                 }
-                throw new IndexOutOfRangeException(); 
+                throw new KeyNotFoundException(); 
+            }
+            set
+            {
+                int a = entries.Count;
+                for (int i = 0; i < entries.Count; i++)
+                {
+
+                    if (entries[i].Key == (dynamic)index)
+                    {
+                        entries[i].Value = value;
+                    }
+                    else {
+                        a--;
+                    }
+                }
+                if(a==0)
+                throw new KeyNotFoundException();
             }
         }
-        public void Add(TKey key,TValue value)
+        public void Add(TKey keyy,TValue valuee)
         {
-            keys.Add(key);
-            values.Add(value);
+            entries.Add(new Entry<TKey, TValue>() { Key = keyy,Value = valuee});
         }
-        public IEnumerator GetEnumerator()
-        {
-            IEnumerator a = keys.GetEnumerator();
-            //a += values.GetEnumerator();
-            return keys.GetEnumerator();
-        }
+    }
+    class Entry<Tkey, TValue>
+    {
+        public Tkey Key;
+        public TValue Value;
     }
 }

@@ -14,9 +14,11 @@ namespace HomeWork05._05
         {
             get
             {
-                if (index < 0 || index >= myList.Length)
-                    throw new IndexOutOfRangeException();
                 return myList[index];
+            }
+            set
+            {
+                myList[index] = value;
             }
         }
         public void Add(T element)
@@ -31,7 +33,7 @@ namespace HomeWork05._05
                 if (myList[i] == (dynamic)element)
                     return i;
             }
-            return -1;
+            throw new IndexOutOfRangeException();
         }
         public IEnumerator GetEnumerator()
         {
